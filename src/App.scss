@@ -1,0 +1,41 @@
+// Description: Global styles for the app
+
+//* Global colors
+$darkColor : #343439;
+$backColor : #e4e5e6;
+$elem1Color: #f8f6f7;
+$elem2Color: #4e5152;
+$btnColor : #3c3d42;
+$textBColor : #2f2c2c;
+$textWColor : #eeeeee;
+
+//* css reset
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+h1,h2,h3,h4,h5,h6,p,li {
+  font-family: 'Roboto', sans-serif;
+  color: $textBColor;
+}
+.App{
+	background-color: $backColor;
+	min-height: 100vh;
+}
+
+#sign-in-page{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100vh;
+}
+
+.link{
+	text-decoration: underline;
+	color: blue;
+}
+
+.success-label{
+	color: green;
+}

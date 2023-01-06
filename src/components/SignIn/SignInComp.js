@@ -1,66 +1,89 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
+
 import "./SignInComp.scss";
 
 const API_KEY = "AIzaSyCvaaBybNUe-NMKC_kGh7s7LfDJiGy7lFc";
 
 const SignInComp = (props) => {
-  const [title, setTitle] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [errors, setErrors] = useState([]);
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+    errors: [],
+  });
+
   const [loaded, setLoaded] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
+
+  //? on pathname change getting the title to set properly
   useEffect(() => {
     let path = location.pathname;
-    setTitle(path === "/" ? "Sign Up" : "Sign In");
-    setLoaded(false);
+    setFormData({
+      email: "",
+      password: "",
+      errors: [],
+      title: path === "/" ? "Sign Up" : "Sign In",
+    });
   }, [location.pathname]);
 
+  //? using axios with firebase. url is different for sign up and sign in.
+  //? action is only the path name to navigate to "without the slash"
+  const axiosPost = (url, action) => {
+    axios
+      .post(`${url + API_KEY}`, {
+        email: formData.email,
+        password: formData.password,
+        returnSecureToken: true,
+      })
+      .then((res) => {
+        props.userData(res.data);
+        setFormData({ ...formData, errors: [] });
+        setLoaded(true);
+        console.log(`navigating to ${action} page...`);
+        setTimeout(() => {
+          navigate("/" + action);
+        }, 600);
+      })
+      .catch((err) => {
+        // console.log("err", err.response.data.error.message);
+        setFormData({ ...formData, errors: [err.response.data.error.message] });
+      });
+  };
+
+  //? on submit, check if email and password are filled in
+  //? if so, check if the title is sign up or sign in
   const loginHandler = (e) => {
-    console.log("loginHandler ~");
+    // console.log("loginHandler ~");
     e.preventDefault();
-    if (email === "" || password === "") {
-      setErrors(["Please fill in your credentials"]);
+    if (formData.email === "" || formData.password === "") {
+      setFormData({ ...formData, errors: ["Please fill in your credentials"] });
     } else {
-      axios
-        .post(
-          `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${API_KEY}`,
-          {
-            email: email,
-            password: password,
-            returnSecureToken: true,
-          }
-        )
-        .then((res) => {
-          props.userData(res.data);
-          //   localStorage.setItem("userData", JSON.stringify(res.data));
-          //   localStorage.setItem("logged", 1);
-          setErrors([]);
-          setLoaded(true);
-          setTimeout(() => {
-            navigate("/dashboard");
-          }, 600);
-        })
-        .catch((err) => {
-          console.log("err", err.response.data.error.message);
-          setErrors([err.response.data.error.message]);
-        });
+      if (formData.title === "Sign Up") {
+        axiosPost(
+          `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=`,
+          "sign-in"
+        );
+      } else if (formData.title === "Sign In") {
+        axiosPost(
+          "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=",
+          "dashboard"
+        );
+      }
     }
   };
 
   return (
     <div className="signin-comp">
-      <h1>Welcome! {title}</h1>
+      <h1>Welcome! {formData.title}</h1>
       <br />
       <form onSubmit={loginHandler}>
         <label htmlFor="email">Email</label>
         <input
           type="text"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          value={formData.email}
+          onChange={(e) => setFormData({ ...formData, email: e.target.value })}
           name="email"
           id="email"
         />
@@ -69,18 +92,20 @@ const SignInComp = (props) => {
         <label htmlFor="password">Password</label>
         <input
           type="text"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          value={formData.password}
+          onChange={(e) =>
+            setFormData({ ...formData, password: e.target.value })
+          }
           name="password"
           id="password"
         />
         <br />
         <br />
-        <button type="submit">{title}</button>
+        <button type="submit">{formData.title}</button>
       </form>
-      {errors && (
+      {formData.errors && (
         <div className="errors">
-          {errors.map((err, index) => {
+          {formData.errors.map((err, index) => {
             return <p key={index}>{err}</p>;
           })}
         </div>
@@ -89,13 +114,15 @@ const SignInComp = (props) => {
       {loaded ? (
         <>
           <p>
-            <span className="success-label">successfully {title}!</span>{" "}
+            <span className="success-label">
+              successfully {formData.title}!
+            </span>
             <i>redirecting...</i>
           </p>
         </>
       ) : (
         <>
-          {title === "Sign In" ? (
+          {formData.title === "Sign In" ? (
             <>
               <p>
                 new user?{" "}

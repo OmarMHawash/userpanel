@@ -3,6 +3,9 @@ import { Routes, Route } from "react-router-dom";
 
 import SignIn from "./Pages/SignIn/SignIn";
 import Home from "./Pages/Home/Home";
+import LayoutHome from "./Components/LayoutHome/LayoutHome";
+import LayoutPanel from "./Components/LayoutPanel/LayoutPanel";
+import PageNotFound from "./Pages/PageNotFound/PageNotFound";
 
 import "./App.scss";
 
@@ -12,19 +15,33 @@ function App() {
   return (
     <div className="App">
       <Routes>
+        {/* Dashboard pages routing */}
         <Route
-          path="/"
-          element={
-            <SignIn userDataIn={(_userData) => setUserData(_userData)} />
-          }
-        />
+          path={"/dashboard"}
+          element={<LayoutPanel />}
+          errorElement={<PageNotFound />}>
+          <Route path="" element={<Home userDataOut={userData} />} />
+          <Route path="*" element={<PageNotFound />} />
+        </Route>
+        {/* Landing Home pages routing */}
         <Route
-          path="/sign-in"
-          element={
-            <SignIn userDataIn={(_userData) => setUserData(_userData)} />
-          }
-        />
-        <Route path="/dashboard" element={<Home userDataOut={userData} />} />
+          path={"/"}
+          element={<LayoutHome />}
+          errorElement={<PageNotFound />}>
+          <Route
+            path="/sign-up"
+            element={
+              <SignIn userDataIn={(_userData) => setUserData(_userData)} />
+            }
+          />
+          <Route
+            path="/"
+            element={
+              <SignIn userDataIn={(_userData) => setUserData(_userData)} />
+            }
+          />
+          <Route path="/*" element={<PageNotFound />} />
+        </Route>
       </Routes>
     </div>
   );

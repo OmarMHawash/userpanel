@@ -8,7 +8,7 @@ const Home = (props) => {
   useEffect(() => {
     setUserData(props.userDataOut);
     setLoaded(true);
-  }, []);
+  }, [props.userDataOut]);
 
   return (
     <div>
@@ -16,7 +16,7 @@ const Home = (props) => {
         <>
           <h1>Home</h1>
           <h3>Welcome {userData?.email}!</h3>
-          <Link className="link" to="/sign-in">
+          <Link className="link" to="/">
             Sign Out
           </Link>
         </>

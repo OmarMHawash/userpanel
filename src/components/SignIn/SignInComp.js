@@ -24,7 +24,7 @@ const SignInComp = (props) => {
       email: "",
       password: "",
       errors: [],
-      title: path === "/" ? "Sign Up" : "Sign In",
+      title: path === "/sign-up" ? "Sign Up" : "Sign In",
     });
   }, [location.pathname]);
 
@@ -44,7 +44,7 @@ const SignInComp = (props) => {
         console.log(`navigating to ${action} page...`);
         setTimeout(() => {
           navigate("/" + action);
-        }, 600);
+        }, 500);
       })
       .catch((err) => {
         // console.log("err", err.response.data.error.message);
@@ -63,7 +63,7 @@ const SignInComp = (props) => {
       if (formData.title === "Sign Up") {
         axiosPost(
           `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=`,
-          "sign-in"
+          ""
         );
       } else if (formData.title === "Sign In") {
         axiosPost(
@@ -125,8 +125,9 @@ const SignInComp = (props) => {
           {formData.title === "Sign In" ? (
             <>
               <p>
-                new user?{" "}
-                <Link className="link" to="/">
+                new user?
+                {/* <Link className="link" to="/"> */}
+                <Link className="link" to="/sign-up">
                   Sign Up
                 </Link>
                 .
@@ -136,7 +137,7 @@ const SignInComp = (props) => {
             <>
               <p>
                 already have an account?{" "}
-                <Link className="link" to="/sign-in">
+                <Link className="link" to="/">
                   Sign in
                 </Link>
                 .

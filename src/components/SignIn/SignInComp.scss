@@ -2,35 +2,110 @@
 .signin-comp {
   display: flex;
   flex-direction: column;
-//   align-items: center;
-//   justify-content: center;
   height: fit-content;
   width: fit-content;
   margin: 0 auto;
-  background-color: $elem1Color;
+  background-color: $BackColor_Light;
   border-radius: 10px;
-  padding: 20px;
+  padding: 20px 20px 5px 20px;
+  h1,p,label,span{
+	color: $textColor_Black;
+  }
+  form{
+	width: 280px;
+	padding-top: 10px;
+  }
+  .sign-result{
+	  width: 100%;
+	  padding: 10px 15px;
+	  border-radius: 15px;
+	  p{
+		  font-size: 14px;
+		}
+	}
+	.errors{
+	margin-top: 10px;
+	background-color: rgba(255, 42, 42, 0.767);
+	p{
+		color: white;
+	}
+  }
+  .success{
+	background-color: rgba(0, 255, 0, 0.767);
+	p{
+		color: black;
+	}
+}
   h1{
-	color: $textBColor;
+	text-align: center;
   }
-  .errors p{
-	color: red;
-  }
-  button{
-	background-color: $btnColor;
-	color: $textWColor;
-	padding: 10px;
-	border-radius: 15px;
-	border: none;
-	font-size: 1rem;
-	float: right;
+  label{
+	display: block;
+	width: fit-content;
+	font-size: 12px;
+	padding-bottom: 3px;
   }
   input{
-	float: right;
+	border: 1px rgba(128, 128, 128, 0.145) solid;
+	padding: 5px;
+	width: 100%;
+	border-radius: 4px;
+	color: black;
+	box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.43);
+
   }
+  .pass-tog{
+	color: black;
+  }
+  
+  input::placeholder{
+	font-size: 14px;
+  }
+  input[type="text"]{
+	padding: 5px 15px;
+  }
+  input:focus{
+	border: 1px #0004fd73 solid;
+	outline: none;
+  }
+  
+  .sign-btns{
+	margin-top: 10px;
+	display: flex;
+	justify-content: space-between;
+	button{
+		width: 100%;
+		max-width: 50%;
+		min-width: fit-content;
+		padding: 6px 0px;
+		border-radius: 7px;
+		border: 1px solid gray;
+		font-size: 15px;
+		padding: 7px 10px;
+		@include scaleUp;
+	  }
+	  button:first-child{
+		color: white;
+		background-color: $btnColor;
+	}
+	button:last-child{
+		color: black;
+		background-color: white;
+	  }
+  }
+  .user-agreement{
+	margin-top: 20px;
+	font-size: 0.7rem;
+	width: 100%;
+	padding-right: 10px;
+	color: #8e8d8d;
+	span{
+		text-decoration: underline
+	}
+  }
+  @include fade-in;
 }
 
 label{
-	color: $textBColor;
+	color: $textColor_Muted;
 }
-

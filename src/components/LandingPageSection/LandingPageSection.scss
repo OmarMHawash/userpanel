@@ -1,0 +1,76 @@
+@import '../../App.scss';
+.section{
+	background-color: $elemColor_Dark;
+	width: 100%;
+}
+.hero-section{
+	display: flex;
+	width: 90%;
+	margin: 50px auto 50px auto;
+	padding: 10px;
+	.content{
+		margin: auto 0;
+		width: 50%;
+		padding: 20px 40px 20px 20px;
+		h1{
+			font-size: 50px;
+		}
+		p{
+			width: 70%;
+			margin-bottom: 30px;
+			font-size: 20px;
+		}
+		color: $textColor_Light;
+	}
+	.image-wrapper{
+		padding-top:20px ;
+		width: 50%;
+	}
+	button{
+		background-color: $btnColor;
+		padding: 15px;
+		color: $textColor_Light;
+		border-radius: 25px;
+	}
+}
+.row{
+	display: flex;
+}
+.element-1{
+	width: 90%;
+	margin-right: auto;
+	margin-left: auto;
+	// height: 300px;
+	padding: 40px 0px 60px 10px;
+	margin-top: 100px;
+	margin-bottom: 5%;
+	border-radius: 10px;
+	background-color: $BackColor_Dark;
+	div{
+		width: 45%;
+		height: 95%;
+		padding: 5px;
+		margin-left: auto;
+		margin-right: auto;
+		// background-color: aquamarine;
+		img{
+			width: 95%;
+		}
+	}
+	.sec-data{
+		// padding: 10px 15px 15px 15px !important;
+		p{
+			font-size: 19px;
+		}
+	}
+}
+
+
+.box-1, .box-background{    
+    border-radius: 10px;
+    box-shadow: rgba(48, 47, 47, 0.35) 0px 5px 15px;
+}
+
+.col-6{
+	width: 50%;
+}

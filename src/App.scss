@@ -1,13 +1,18 @@
 // Description: Global styles for the app
-
+@import './Styles/global_mixins.scss';
 //* Global colors
-$darkColor : #343439;
-$backColor : #e4e5e6;
-$elem1Color: #f8f6f7;
-$elem2Color: #4e5152;
-$btnColor : #3c3d42;
-$textBColor : #2f2c2c;
-$textWColor : #eeeeee;
+$BackColor_Dark : #222;
+$BackColor_Light : #fff;
+$elemColor_New: #f1f5f9;
+
+$btnColor : #4769e7;
+
+$textColor_Black : #2f2c2c;
+$textColor_Light : #fff;
+$textColor_Muted : #505050;
+
+$elemColor_Light: #fff;
+$elemColor_Dark: #202124;
 
 //* css reset
 *{
@@ -15,12 +20,20 @@ $textWColor : #eeeeee;
   padding: 0;
   box-sizing: border-box;
 }
-h1,h2,h3,h4,h5,h6,p,li {
-  font-family: 'Roboto', sans-serif;
-  color: $textBColor;
+// h1,h2,h3,h4,h5,h6,p,li {
+//   font-family: 'Roboto', sans-serif;
+//   color: $textColor_Light;
+// }
+@keyframes fade-in {			
+	0% {
+		opacity:0;
+	}
+	100% {
+		opacity:1;
+	}
 }
 .App{
-	background-color: $backColor;
+	background-color: $BackColor_Dark;
 	min-height: 100vh;
 }
 

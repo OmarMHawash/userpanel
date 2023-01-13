@@ -1,0 +1,15 @@
+#dashboard{
+	display: flex;
+}
+
+.action-panel{
+	width: 20%;
+	min-height: 100vh;
+	background-color: aqua;
+}
+
+#dashboard .main-content{
+	width: 80%;
+	min-height: 100vh;
+	background-color: rgb(63, 108, 108);	
+}

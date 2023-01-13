@@ -1,0 +1,37 @@
+@mixin scaleUp {
+	&:hover {
+		cursor: pointer;
+		transition: transform 0.1s;
+		transform: scale(1.03);
+	}
+}
+@mixin animation-kit($keyframe, $type, $duration){
+	animation: $keyframe $type $duration;
+	-webkit-animation: $keyframe $type $duration;
+	-moz-animation: $keyframe $type $duration;
+	-o-animation: $keyframe $type $duration;
+	-ms-animation: $keyframe $type $duration;
+}
+
+@mixin fade-in {
+	@include animation-kit(fade-in, ease-in, 0.1s);
+}
+
+@keyframes fade-in {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+@keyframes scale-up {
+	0% {
+		transform: scale(1);
+	}
+
+	100% {
+		transform: scale(1.1);
+	}
+}

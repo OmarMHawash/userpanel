@@ -2,14 +2,14 @@ import React from "react";
 import { Outlet } from "react-router-dom";
 
 import Footer from "../Footer/Footer";
-import Header from "../Header/Header";
+import Navbar from "../Navbar/Navbar";
 const LayoutHome = () => {
   return (
-    <>
-      <Header />
+    <div className="leading-normal tracking-normal text-white">
+      <Navbar />
       <Outlet />
       <Footer />
-    </>
+    </div>
   );
 };
 

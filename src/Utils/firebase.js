@@ -1,4 +1,7 @@
 // Your web app's Firebase configuration
+import { initializeApp } from "firebase/app";
+import { getFirestore } from "firebase/firestore";
+
 const firebaseConfig = {
   apiKey: "AIzaSyCvaaBybNUe-NMKC_kGh7s7LfDJiGy7lFc",
   authDomain: "react-omh.firebaseapp.com",
@@ -9,4 +12,7 @@ const firebaseConfig = {
   measurementId: "G-C6F0PMQS8G",
 };
 
-export default firebaseConfig;
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+export default db;

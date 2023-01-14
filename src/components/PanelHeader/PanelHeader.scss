@@ -1,0 +1,45 @@
+@import '../../App.scss';
+
+.panel-header{
+	display: flex;
+	justify-content: space-between;
+	background-color: $white;
+	color: $black;
+	height: 50px;
+	box-shadow: 0px 0px 5px 0px #00000010;
+	.user-content{
+		width: fit-content;
+		display: flex;
+		justify-content: flex-end;
+		padding: 5px 10px;
+		border-left: 1px solid $dark_1;
+		img{
+			width: fit-content;
+			padding: 2px;
+			border-radius: 20px;
+			background-color: rgb(189, 189, 189);
+			margin: 0 5px 0 0;
+		}
+		h3{
+			margin: auto 0;
+			font-size: 15px;
+			font-weight: 700;
+		}
+
+		}
+	.user-content:hover{
+		cursor: pointer;
+	}
+	.text-content{
+		width: 75%;
+		display: flex;
+		margin: auto 0;
+		padding: 0px 10px;
+		h1{
+			font-size: 15px;
+			font-weight: 700;
+			padding-left: 5px;
+		}
+	}
+	
+}

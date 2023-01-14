@@ -1,18 +1,20 @@
 import { Outlet } from "react-router-dom";
 import { GlobalContext } from "../../Utils/Context";
-
+import FirestoneDB from "../../Utils/FirestoneDB";
 const Layout = () => {
-  //   const [userData, setUserData] = useState(null);
-
   const user = {
     loadUser: (_userData) => {
-      //   setUserData(_userData);
       localStorage.setItem("userData", JSON.stringify(_userData));
     },
-    getUser: () => {
-      if (localStorage.getItem("userData") !== null)
-        return JSON.parse(localStorage.getItem("userData"));
-      else return 0;
+    getUser: async () => {
+      if (localStorage.getItem("userData") !== null) {
+        let userData = {};
+        let user = JSON.parse(localStorage.getItem("userData"));
+        let _user = await FirestoneDB.getUserByEmail(user.email);
+        userData = { ..._user, ...user };
+        console.log(userData);
+        return userData;
+      } else return 0;
     },
     removeUser: () => {
       localStorage.removeItem("userData");

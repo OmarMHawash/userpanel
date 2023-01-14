@@ -1,6 +1,6 @@
 @import '../../App.scss';
 .section{
-	background-color: $elemColor_Dark;
+	background-color: $dark_1;
 	width: 100%;
 }
 .hero-section{
@@ -20,16 +20,16 @@
 			margin-bottom: 30px;
 			font-size: 20px;
 		}
-		color: $textColor_Light;
+		color: $white;
 	}
 	.image-wrapper{
 		padding-top:20px ;
 		width: 50%;
 	}
 	button{
-		background-color: $btnColor;
+		background-color: $light_1;
 		padding: 15px;
-		color: $textColor_Light;
+		color: $white;
 		border-radius: 25px;
 	}
 }
@@ -45,7 +45,7 @@
 	margin-top: 100px;
 	margin-bottom: 5%;
 	border-radius: 10px;
-	background-color: $BackColor_Dark;
+	background-color: $dark_2;
 	div{
 		width: 45%;
 		height: 95%;

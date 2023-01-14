@@ -1,0 +1,18 @@
+@import '../../App.scss';
+#browse-courses{
+	padding: 120px 20px 20px 30px;
+	color: white;
+	width: 100%;
+	color: $white;
+	.courses-section{
+		width: 90%;
+		margin: 0 auto;
+		.browse-title{
+			font-size: 45px;
+			margin-bottom: 10px;
+		}
+	}
+	.courses{
+		display: flex;
+	}
+}

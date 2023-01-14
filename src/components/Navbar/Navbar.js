@@ -1,12 +1,14 @@
 import { solid } from "@fortawesome/fontawesome-svg-core/import.macro";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React from "react";
+import { GlobalContext } from "../../Utils/Context";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
 const Navbar = () => {
+  const user = useContext(GlobalContext).user.getUser();
   return (
     <nav
       id="header"
-      className="fixed w-full z-30 top-0 text-white bg-slate-600">
+      className="fixed w-full z-30 top-0 text-white bg-[#144272]">
       <div className="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 py-2">
         <div className="pl-4 flex items-center">
           <FontAwesomeIcon icon={solid("lines-leaning")} size="2xl" />
@@ -35,17 +37,18 @@ const Navbar = () => {
           <ul className="list-reset lg:flex justify-end flex-1 items-center">
             <li className="mr-3">
               <Link
-                className="inline-block py-2 px-4 text-black font-bold no-underline"
+                className="inline-block py-2 px-4 text-white font-bold no-underline"
                 to="/browse">
                 Browse Courses
               </Link>
             </li>
           </ul>
-          <Link to="/sign-up">
+
+          <Link to={user ? "/dashboard" : "/sign-up"}>
             <button
               id="navAction"
-              className="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full mt-4 lg:mt-0 py-4 px-8 shadow opacity-75 focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
-              Sign Up
+              className="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full mt-4 lg:mt-0 py-3 px-4 opacity-100 focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
+              {user ? "Dashboard" : "Sign Up"}
             </button>
           </Link>
         </div>

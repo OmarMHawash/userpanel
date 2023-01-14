@@ -18,7 +18,8 @@ function myObjects() {
   let course = {
     name: "",
     description: "",
-    thumb: "",
+    image: "",
+    date_created: "",
   };
   let tag = {
     name: "",
@@ -48,7 +49,9 @@ function myObjects() {
 }
 
 const FirestoneDB = {
+  //? users
   createUser: async (user) => {
+    console.log(user);
     try {
       const userRef = await addDoc(collection(db, "users"), {
         name: user.name,
@@ -59,7 +62,7 @@ const FirestoneDB = {
     } catch (e) {
       console.error("Error adding document: ", e);
     }
-    console.log("done! ~ addDoc");
+    // console.log("done! ~ addDoc");
   },
   getUserById: async (uid) => {
     const userIdRef = doc(db, "users", uid);
@@ -77,11 +80,6 @@ const FirestoneDB = {
     users.forEach((doc) => {
       console.log(doc.id, doc.data());
     });
-    // if (users) {
-    //   console.log("Document data:", users);
-    // } else {
-    //   console.log("No such document!");
-    // }
   },
   getUserByEmail: async (user_email) => {
     const users = collection(db, "users");
@@ -92,12 +90,82 @@ const FirestoneDB = {
       myUser = doc.data();
     });
     return myUser;
-    // const citiesRef = collection(db, "cities");
-    // const q = query(citiesRef, where("capital", "==", true));
-    // filteredUser.forEach((doc) => {
-    //   console.log(doc.id, doc.data());
-    // });
   },
+  //* end of user
+
+  //? course
+  getCourses: async () => {
+    // const userIdRef = doc(db, "users");
+    const courses = await getDocs(collection(db, "courses"));
+    let _courses = [];
+    courses.forEach((doc) => {
+      //   console.log(doc.id, doc.data());
+      let obj = {
+        id: doc.id,
+        ...doc.data(),
+      };
+      _courses = [..._courses, obj];
+    });
+    return _courses;
+  },
+  getCourseById: async (uid) => {
+    const courseIdRef = doc(db, "courses", uid);
+    const course = await getDoc(courseIdRef);
+
+    if (course.exists()) {
+      let obj = {
+        id: uid,
+        ...course.data(),
+      };
+      //   console.log("Document data:", course.data());
+      return obj;
+    } else {
+      console.log("No such document!");
+    }
+  },
+  //* end of course //
+
+  //? chapters //
+  getCourseChapters: async (course_id) => {
+    const chapters = collection(db, "chapters");
+    const filteredChapters = query(
+      chapters,
+      where("course_id", "==", course_id)
+    );
+    const _filteredChapters = await getDocs(filteredChapters);
+    let myChapters = [];
+    _filteredChapters.forEach((doc) => {
+      myChapters = [...myChapters, doc.data()];
+    });
+    return myChapters;
+  },
+  //* end of chapters //
+
+  //? tags //
+  getCourseTags: async (course_id) => {
+    const ctags = collection(db, "courses_tags");
+    const filteredCTags = query(ctags, where("course_id", "==", course_id));
+    const _filteredCTags = await getDocs(filteredCTags);
+    let myCTags = [];
+    _filteredCTags.forEach((doc) => {
+      myCTags = [...myCTags, doc.data()];
+    });
+    return myCTags;
+  },
+
+  getTags: async () => {
+    const tags = await getDocs(collection(db, "tag"));
+    let _tags = [];
+    tags.forEach((doc) => {
+      let obj = {
+        id: doc.id,
+        ...doc.data(),
+      };
+      _tags = [..._tags, obj];
+    });
+    return _tags;
+  },
+  //* end of tags //
 };
 
 export default FirestoneDB;

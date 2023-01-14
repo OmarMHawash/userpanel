@@ -5,11 +5,11 @@
   height: fit-content;
   width: fit-content;
   margin: 0 auto;
-  background-color: $BackColor_Light;
+  background-color: $white;
   border-radius: 10px;
   padding: 20px 20px 5px 20px;
   h1,p,label,span{
-	color: $textColor_Black;
+	color: $black;
   }
   form{
 	width: 280px;
@@ -27,13 +27,13 @@
 	margin-top: 10px;
 	background-color: rgba(255, 42, 42, 0.767);
 	p{
-		color: white;
+		color: $white;
 	}
   }
   .success{
 	background-color: rgba(0, 255, 0, 0.767);
 	p{
-		color: black;
+		color: $black;
 	}
 }
   h1{
@@ -55,7 +55,7 @@
 
   }
   .pass-tog{
-	color: black;
+	color: $black;
   }
   
   input::placeholder{
@@ -85,12 +85,12 @@
 		@include scaleUp;
 	  }
 	  button:first-child{
-		color: white;
-		background-color: $btnColor;
+		color: $white;
+		background-color: $light_2;
 	}
 	button:last-child{
-		color: black;
-		background-color: white;
+		color: $black;
+		background-color: $white;
 	  }
   }
   .user-agreement{
@@ -98,7 +98,7 @@
 	font-size: 0.7rem;
 	width: 100%;
 	padding-right: 10px;
-	color: #8e8d8d;
+	color: $muted;
 	span{
 		text-decoration: underline
 	}
@@ -107,5 +107,5 @@
 }
 
 label{
-	color: $textColor_Muted;
+	color: $muted;
 }

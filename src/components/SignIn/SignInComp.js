@@ -7,7 +7,7 @@ import "./SignInComp.scss";
 
 const API_KEY = "AIzaSyCvaaBybNUe-NMKC_kGh7s7LfDJiGy7lFc";
 
-const SignInComp = (props) => {
+const SignInComp = () => {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -50,7 +50,6 @@ const SignInComp = (props) => {
         returnSecureToken: true,
       })
       .then((res) => {
-        props.userData(res.data);
         formData.title === "Sign In" && setUserData(res.data);
         setFormData({ ...formData, errors: [] });
         console.log(`navigating to ${action} page...`);

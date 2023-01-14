@@ -6,14 +6,14 @@ const Layout = () => {
     loadUser: (_userData) => {
       localStorage.setItem("userData", JSON.stringify(_userData));
     },
-    getUser: async () => {
+    getUser: () => {
       if (localStorage.getItem("userData") !== null) {
-        let userData = {};
+        // let userData = {};
         let user = JSON.parse(localStorage.getItem("userData"));
-        let _user = await FirestoneDB.getUserByEmail(user.email);
-        userData = { ..._user, ...user };
-        console.log(userData);
-        return userData;
+        // let _user = await FirestoneDB.getUserByEmail(user.email);
+        // userData = { ..._user, ...user };
+        // console.log(userData);
+        return user;
       } else return 0;
     },
     removeUser: () => {

@@ -1,6 +1,7 @@
 import { useState, useEffect, useContext } from "react";
 import { GlobalContext } from "../../Utils/Context";
 import "./Home.scss";
+import FirestoneDB from "../../Utils/FirestoneDB";
 const Home = () => {
   const [loaded, setLoaded] = useState(false);
   const [userData, setUserData] = useState({});
@@ -11,8 +12,9 @@ const Home = () => {
   }, []);
 
   const getUserData = async () => {
-    let _userData = await userContext.getUser();
-    setUserData(_userData);
+    let user = userContext.getUser();
+    let _user = await FirestoneDB.getUserByEmail(user.email);
+    setUserData({ ...user, ..._user });
   };
 
   return (

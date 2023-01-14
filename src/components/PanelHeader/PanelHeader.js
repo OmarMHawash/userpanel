@@ -16,8 +16,9 @@ const PanelHeader = () => {
   }, []);
 
   const loadUser = async () => {
-    let _userData = await userContext.getUser();
-    setUserData(_userData);
+    let user = userContext.getUser();
+    let _user = await FirestoneDB.getUserByEmail(user.email);
+    setUserData({ ...user, ..._user });
   };
   return (
     <div className="panel-header">

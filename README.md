@@ -19,4 +19,23 @@ you will need to have Node.js installed on your computer and Git (or you can dow
 
 # Preview:
 
+## Home Page
+![Home Page](https://github.com/OmarMHawash/userpanel/blob/main/docs/images/home.png)
+
+
+## Courses Browse
+![Courses](https://github.com/OmarMHawash/userpanel/blob/main/docs/images/courses.png)
+
+
+## Course Details
+![Course](https://github.com/OmarMHawash/userpanel/blob/main/docs/images/course.png)
+
+##
+
+
+## User Registeration
+![signing](https://github.com/OmarMHawash/userpanel/blob/main/docs/images/signing.png)
+
+## Dashboard
+![dashboard](https://github.com/OmarMHawash/userpanel/blob/main/docs/images/dashboard.png)
 ...

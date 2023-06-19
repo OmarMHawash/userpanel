@@ -47,6 +47,8 @@ Checkout The Demo: [Live Demo](https://memberpress.com/wp-content/uploads/2020/1
 ### *pre-requisites
 you will need to have **Node.js** installed on your computer and **Git** (or you can download as a **zip file**)
 
+**Note**: The Data wont show, neither the login would work, due to hidden **config firebase object**.
+
 ## Steps
 1. Clone the repository
 

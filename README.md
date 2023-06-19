@@ -2,7 +2,7 @@
     <img alt="logo" src="./docs/images/logo.png" height="40" />
 </p>
 <h1 align="center">
-  Interactive Learning Webapp
+  React-Firebase-firestore-Auth
 </h1>
 
 <p align="center">
@@ -21,8 +21,8 @@
 </p>
 
 
-#### Welcome to our interactive learning platform!
-Here you can easily customize your learning experience, track your progress, and expand your knowledge and skills. Start your journey of discovery and growth today!
+#### Welcome to our react app with google firebase authentication and firestore database!
+The app theme is a learning website, Where you can easily customize your learning experience, track your progress, and expand your knowledge and skills. Start your journey of discovery and growth today!
 
 
 <h2 id="demo"> 🚀 Demo </h2>
@@ -63,27 +63,23 @@ cd userpanel
 3. Install dependencies
 
 ```bash
-npm install
+npm install && npm start
 ```
 
-4. Run the app
-
-```bash
-npm start
-```
 
 <h2 id="features">🤯 Features & Functionalities </h2>
 
 - User login and registration with authentication.
+- User data & Courses Data linked with Google firestore database
 - Simple Homepage navigation and straightforward design for user experience
-- Rich and playfull User Panel for interactive learning experience and progress tracking (in progress...)
-- Browse Courses and Filteration that fits different intrests and levels of experience (in progress...)
+- Browse Courses page (not done)
 ...
 
 <h2 id="resources">💻 Technologies Used </h2>
 
 - This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-- Used [Google Firebase](https://firebase.google.com) tools to handle user authentication and data manipulation.
+- Used [Google Firebase](https://firebase.google.com) tools to handle user authentication.
+- Used [Google Firestore](https://firebase.google.com/docs/firestore) to handle data storage on the cloud.
 
 <h2 id="preview">🌁 Project showdown </h2>
 
